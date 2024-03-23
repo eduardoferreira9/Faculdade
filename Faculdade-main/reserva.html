@@ -69,7 +69,7 @@
                 <div class="row mb-3">
                   <label for="sobrenome" class="col-sm-2 col-form-label">Sobrenome</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="sobrenome" placeholder="Ultimo Nome">
+                    <input type="text" class="form-control" id="sobrenome" placeholder="Último Nome">
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -81,39 +81,36 @@
                 <fieldset class="row mb-3">
                   <legend class="col-form-label col-sm-2 pt-0">Selecione:</legend>
                   <div class="col-sm-10">
-                      <div class="form-check">
-                          <input class="form-check-input" type="radio" name="faixaEtaria" id="gridRadios1" value="Adulto">
-                          <label class="form-check-label" for="gridRadios1">
-                              Adulto
-                          </label>
-                      </div>
-                      <div class="form-check">
-                          <input class="form-check-input" type="radio" name="faixaEtaria" id="gridRadios2" value="Criança">
-                          <label class="form-check-label" for="gridRadios2">
-                              Criança
-                          </label>
-                      </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="faixaEtaria" id="gridRadios1" value="Adulto">
+                      <label class="form-check-label" for="gridRadios1">
+                        Adulto
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="faixaEtaria" id="gridRadios2" value="Criança">
+                      <label class="form-check-label" for="gridRadios2">
+                        Criança
+                      </label>
+                    </div>
                   </div>
-              </fieldset>
+                </fieldset>
                 <button type="button" id="enviarButton" class="btn btn-primary">Enviar</button>
               </form>
-            </div>
-          </div>
-          <br>
-          <br>
-          <div class="row" style="width: 100%;">
-            <table id="minhaTabela" class="table" style="text-align: center;">
-              <thead>
+              
+              <table id="minhaTabela" class="table">
+                <thead>
                   <tr>
-                      <th scope="col">Nome</th>
-                      <th scope="col">Sobrenome</th>
-                      <th scope="col">CPF</th>
-                      <th scope="col">Faixa Etária</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sobrenome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Faixa Etária</th>
                   </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <!-- Aqui serão adicionadas as linhas dinamicamente -->
+                </tbody>
+              </table>
           </div>
 
 

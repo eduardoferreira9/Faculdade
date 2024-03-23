@@ -161,82 +161,69 @@ createCalendar();
 
 // Função para adicionar na tabela
 function adicionarNaTabela() {
-    // Obtém os valores do formulário
     var nome = document.getElementById("nome").value;
     var sobrenome = document.getElementById("sobrenome").value;
     var cpf = document.getElementById("inputCPF").value;
     var faixaEtariaRadios = document.getElementsByName("faixaEtaria");
     var faixaEtaria;
-
-    // Verifica se todos os campos estão preenchidos
+  
     if (nome && sobrenome && cpf) {
-        // Verifica se o CPF já existe na tabela
-        if (!verificarCPFRepetido(cpf)) {
-            // Verifica qual opção está selecionada para a faixa etária
-            for (var i = 0; i < faixaEtariaRadios.length; i++) {
-                if (faixaEtariaRadios[i].checked) {
-                    faixaEtaria = faixaEtariaRadios[i].value;
-                    break;
-                }
-            }
-
-            // Cria uma nova linha na tabela
-            var table = document.getElementById("minhaTabela").getElementsByTagName('tbody')[0];
-            var newRow = table.insertRow();
-
-            // Insere células na nova linha
-            var cell1 = newRow.insertCell(0);
-            var cell2 = newRow.insertCell(1);
-            var cell3 = newRow.insertCell(2);
-            var cell4 = newRow.insertCell(3);
-
-            // Adiciona os valores do formulário às células
-            cell1.innerHTML = nome;
-            cell2.innerHTML = sobrenome;
-            cell3.innerHTML = cpf;
-            cell4.innerHTML = faixaEtaria;
-        } else {
-            // Exibe uma mensagem de erro se o CPF já estiver na tabela
-            alert("CPF já existe na tabela. Por favor, insira um CPF diferente.");
+      if (!verificarCPFRepetido(cpf)) {
+        for (var i = 0; i < faixaEtariaRadios.length; i++) {
+          if (faixaEtariaRadios[i].checked) {
+            faixaEtaria = faixaEtariaRadios[i].value;
+            break;
+          }
         }
+  
+        var table = document.getElementById("minhaTabela").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow();
+  
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+  
+        cell1.innerHTML = nome;
+        cell2.innerHTML = sobrenome;
+        cell3.innerHTML = cpf;
+        cell4.innerHTML = faixaEtaria;
+      } else {
+        alert("CPF já existe na tabela. Por favor, insira um CPF diferente.");
+      }
     } else {
-        // Exibe uma mensagem de erro se algum campo estiver vazio
-        alert("Por favor, preencha todos os campos antes de adicionar à tabela.");
+      alert("Por favor, preencha todos os campos antes de adicionar à tabela.");
     }
-}
-
-// Função para verificar se o CPF já está na tabela
-function verificarCPFRepetido(cpf) {
+  }
+  
+  // Função para verificar se o CPF já está na tabela
+  function verificarCPFRepetido(cpf) {
     var table = document.getElementById("minhaTabela").getElementsByTagName('tbody')[0];
     for (var i = 0; i < table.rows.length; i++) {
-        if (table.rows[i].cells[2].innerHTML === cpf) {
-            return true; // CPF encontrado na tabela
-        }
+      if (table.rows[i].cells[2].innerHTML === cpf) {
+        return true; // CPF encontrado na tabela
+      }
     }
     return false; // CPF não encontrado na tabela
-}
-
-// Função para formatar CPF com máscara
-function formatarCPF(cpf) {
-    cpf = cpf.replace(/\D/g, ''); // Remove caracteres não numéricos
-    cpf = cpf.slice(0, 11); // Limita o número de dígitos para 11
+  }
+  
+  // Função para formatar CPF com máscara
+  function formatarCPF(cpf) {
+    cpf = cpf.replace(/\D/g, '');
+    cpf = cpf.slice(0, 11);
     cpf = cpf.replace(/^(\d{3})(\d)/, '$1.$2');
     cpf = cpf.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
     cpf = cpf.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
     return cpf;
-}
-
-// Função a ser executada quando o documento HTML estiver totalmente carregado
-document.addEventListener("DOMContentLoaded", function() {
-    // Limpa a tabela quando a página é carregada
-    limparTabela();
-
-    // Aplica a máscara ao campo de CPF
+  }
+  
+  // Função a ser executada quando o documento HTML estiver totalmente carregado
+  document.addEventListener("DOMContentLoaded", function() {
     var inputCPF = document.getElementById("inputCPF");
     inputCPF.addEventListener("input", function(event) {
-        inputCPF.value = formatarCPF(inputCPF.value);
+      inputCPF.value = formatarCPF(inputCPF.value);
     });
-
-    // Adiciona o evento de clique ao botão "Enviar"
+  
     document.getElementById("enviarButton").addEventListener("click", adicionarNaTabela);
-});
+  });
+  
